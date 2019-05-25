@@ -1,6 +1,8 @@
 package bank;
 
 import static bank.Currency.*;
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 
 public class BankAccount {
 
@@ -15,12 +17,59 @@ public class BankAccount {
 
     private double sold;
 
+    private String creditCardNumber;
 
-    public BankAccount(String ownerName,Currency currency) {
+    public BankAccount(String ownerName,Currency currency, String creditCardNumber) {
         counter++;
         id = counter;
         this.currency = currency;
         this.ownerName = ownerName;
+        this.creditCardNumber = creditCardNumber;
+    }
+
+    public boolean verifyCreditCard(String creditCardNumber){
+        char [] chars = creditCardNumber.toCharArray();
+        int sum = 0;
+        int[] numbers = new int[chars.length];
+        for (int i = 0; i < chars.length ; i++) {
+            numbers[i] = chars[i]- 48;
+        }
+        for (int i = 0; i < numbers.length - 1; i += 2) {
+            numbers[i] = numbers[i] * 2;
+            if (numbers[i] > 9) {
+                int nr;
+                nr = numbers[i] % 10;
+                numbers[i] /= 10;
+                numbers[i] = numbers[i] + nr;
+
+            }
+
+        }
+//        int sum = 0;
+//        long[] evenNumbers = new long[7];
+//        long[] oddNumbers = new long[7];
+//        int i = 0;
+//        long number = Long.valueOf(creditCardNumber);
+//        while(number > 0 ){
+//            oddNumbers[i] = number % 10;
+//            number /= 10;
+//            evenNumbers[i] = number % 10;
+//            number /= 10;
+//            i++;
+//        }
+        int j = 0;
+        while (j < numbers.length) {
+            sum = sum + numbers[j];
+            j++;
+        }
+
+        if (sum % 10 == 0){
+            return TRUE;
+        }
+        else {
+            return FALSE;
+        }
+
     }
 
     public void withdrawMoney(double sum) {
