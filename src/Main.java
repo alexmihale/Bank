@@ -32,6 +32,10 @@ public class Main {
         Jin.withdrawMoney(912309312,Currency.YEN);
         Jin.withdrawMoney(38127387,Currency.YEN);
 
+        System.out.println(Radu.toString());
+        System.out.println(George.toString());
+        System.out.println(Mihai.toString());
+        System.out.println(Jin.toString());
 
     }
 }
