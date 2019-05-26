@@ -6,7 +6,7 @@ public enum Bank {
 
     private BankAccount[] bankAccounts = new BankAccount[5];
 
-    private Bank() {}
+     Bank() {}
 
     public void registerBankAccount(BankAccount bankAccount){
         if(counter + 1 > this.bankAccounts.length ){
