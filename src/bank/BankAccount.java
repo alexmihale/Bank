@@ -19,7 +19,7 @@ public class BankAccount {
 
     private String creditCardNumber;
 
-    public BankAccount(String ownerName,Currency currency, String creditCardNumber) {
+    public BankAccount(String ownerName, Currency currency, String creditCardNumber) {
         counter++;
         id = counter;
         this.currency = currency;
@@ -27,12 +27,12 @@ public class BankAccount {
         this.creditCardNumber = creditCardNumber;
     }
 
-    public boolean verifyCreditCard(String creditCardNumber){
-        char [] chars = creditCardNumber.toCharArray();
+    public boolean verifyCreditCard(String creditCardNumber) {
+        char[] chars = creditCardNumber.toCharArray();
         int sum = 0;
         int[] numbers = new int[chars.length];
-        for (int i = 0; i < chars.length ; i++) {
-            numbers[i] = chars[i]- 48;
+        for (int i = 0; i < chars.length; i++) {
+            numbers[i] = chars[i] - 48;
         }
         for (int i = 0; i < numbers.length - 1; i += 2) {
             numbers[i] = numbers[i] * 2;
@@ -63,10 +63,9 @@ public class BankAccount {
             j++;
         }
 
-        if (sum % 10 == 0){
+        if (sum % 10 == 0) {
             return TRUE;
-        }
-        else {
+        } else {
             return FALSE;
         }
 
@@ -77,7 +76,7 @@ public class BankAccount {
             return;
         }
         sold = sold - sum;
-        System.out.println("You withdraw " + sum +" " + this.currency);
+        System.out.println("You withdraw " + sum + " " + this.currency);
     }
 
     private double checkBalance(double sum) {
@@ -96,7 +95,8 @@ public class BankAccount {
             return;
         }
         System.out.println("You withdraw " + sum + " " + currency);
-            if (currency == Currency.USD && this.currency == EUR) {
+        if (this.currency == EUR) {
+            if (currency == Currency.USD) {
                 newSum = convertUsdToEur(sum);
                 if (checkBalance(newSum) == -1) {
                     return;
@@ -105,7 +105,7 @@ public class BankAccount {
                 sold = sold - newSum;
             }
 
-            if (currency == Currency.RON && this.currency == EUR) {
+            if (currency == Currency.RON) {
                 newSum = convertToUsd(sum, RON);
                 secondSum = convertUsdToEur(newSum);
                 if (checkBalance(secondSum) == -1) {
@@ -114,7 +114,7 @@ public class BankAccount {
                 sold = sold - secondSum;
             }
 
-            if (currency == Currency.YEN && this.currency == EUR) {
+            if (currency == Currency.YEN) {
                 newSum = convertToUsd(sum, YEN);
                 secondSum = convertUsdToEur(newSum);
                 if (checkBalance(secondSum) == -1) {
@@ -122,8 +122,9 @@ public class BankAccount {
                 }
                 sold = sold - secondSum;
             }
-
-            if (currency == Currency.USD && this.currency == Currency.YEN) {
+        }
+        if (this.currency == Currency.YEN) {
+            if (currency == Currency.USD) {
                 newSum = convertUsdToYen(sum);
                 if (checkBalance(newSum) == -1) {
                     return;
@@ -131,7 +132,7 @@ public class BankAccount {
                 sold = sold - newSum;
             }
 
-            if (currency == Currency.RON && this.currency == Currency.YEN) {
+            if (currency == Currency.RON) {
                 newSum = convertToUsd(sum, RON);
                 secondSum = convertUsdToYen(newSum);
                 if (checkBalance(secondSum) == -1) {
@@ -141,7 +142,7 @@ public class BankAccount {
                 sold = sold - secondSum;
             }
 
-            if (currency == EUR && this.currency == Currency.YEN) {
+            if (currency == EUR) {
                 newSum = convertToUsd(sum, EUR);
                 secondSum = convertUsdToYen(newSum);
                 if (checkBalance(secondSum) == -1) {
@@ -149,8 +150,9 @@ public class BankAccount {
                 }
                 sold = sold - secondSum;
             }
-
-            if (currency == Currency.USD && this.currency == Currency.RON) {
+        }
+        if (this.currency == Currency.RON) {
+            if (currency == Currency.USD) {
                 newSum = convertUsdToRon(sum);
                 if (checkBalance(newSum) == -1) {
                     return;
@@ -158,7 +160,7 @@ public class BankAccount {
                 sold = sold - newSum;
             }
 
-            if (currency == EUR && this.currency == Currency.RON) {
+            if (currency == EUR) {
                 newSum = convertToUsd(sum, EUR);
                 secondSum = convertUsdToRon(newSum);
                 if (checkBalance(secondSum) == -1) {
@@ -167,7 +169,7 @@ public class BankAccount {
                 sold = sold - secondSum;
             }
 
-            if (currency == Currency.YEN && this.currency == Currency.RON) {
+            if (currency == Currency.YEN) {
                 newSum = convertToUsd(sum, YEN);
                 secondSum = convertUsdToRon(newSum);
                 if (checkBalance(secondSum) == -1) {
@@ -175,8 +177,9 @@ public class BankAccount {
                 }
                 sold = sold - secondSum;
             }
-
-            if (currency == EUR && this.currency == Currency.USD) {
+        }
+        if (this.currency == Currency.USD) {
+            if (currency == EUR) {
                 newSum = convertToUsd(sum, EUR);
                 if (checkBalance(newSum) == -1) {
                     return;
@@ -184,7 +187,7 @@ public class BankAccount {
                 sold = sold - newSum;
             }
 
-            if (currency == Currency.RON && this.currency == Currency.USD) {
+            if (currency == Currency.RON) {
                 newSum = convertToUsd(sum, RON);
                 if (checkBalance(newSum) == -1) {
                     return;
@@ -192,14 +195,14 @@ public class BankAccount {
                 sold = sold - newSum;
             }
 
-            if (currency == Currency.YEN && this.currency == Currency.USD) {
+            if (currency == Currency.YEN) {
                 newSum = convertToUsd(sum, YEN);
                 if (checkBalance(newSum) == -1) {
                     return;
                 }
                 sold = sold - newSum;
             }
-
+        }
     }
 
     public void depositMoney(double sum) {
@@ -216,68 +219,69 @@ public class BankAccount {
         }
         System.out.println("You deposit " + sum + " " + currency);
 
-            if (currency == RON && this.currency == USD) {
-                newSum = convertToUsd(sum, RON);
-                sold = sold + newSum;
-            }
-            if (currency == EUR && this.currency == USD) {
-                newSum = convertToUsd(sum, EUR);
-                sold = sold + newSum;
-            }
-            if (currency == YEN && this.currency == USD) {
-                newSum = convertToUsd(sum, YEN);
-                sold = sold + newSum;
-            }
+        if (currency == RON && this.currency == USD) {
+            newSum = convertToUsd(sum, RON);
+            sold = sold + newSum;
+        }
+        if (currency == EUR && this.currency == USD) {
+            newSum = convertToUsd(sum, EUR);
+            sold = sold + newSum;
+        }
+        if (currency == YEN && this.currency == USD) {
+            newSum = convertToUsd(sum, YEN);
+            sold = sold + newSum;
+        }
 
-            if (currency == USD && this.currency == RON) {
-                newSum = convertUsdToRon(sum);
-                sold = sold + newSum;
-            }
-            if (currency == EUR && this.currency == RON) {
-                newSum = convertToUsd(sum, EUR);
-                secondSum = convertUsdToRon(newSum);
-                sold = sold + secondSum;
-            }
-            if (currency == YEN && this.currency == RON) {
-                newSum = convertToUsd(sum, YEN);
-                secondSum = convertUsdToRon(newSum);
-                sold = sold + secondSum;
-            }
-
-
-            if (currency == USD && this.currency == EUR) {
-                newSum = convertUsdToEur(sum);
-                sold = sold + newSum;
-            }
-            if (currency == RON && this.currency == EUR) {
-                newSum = convertToUsd(sum, RON);
-                secondSum = convertUsdToEur(newSum);
-                sold = sold + secondSum;
-            }
-            if (currency == YEN && this.currency == EUR) {
-                newSum = convertToUsd(sum, YEN);
-                secondSum = convertUsdToEur(newSum);
-                sold = sold + newSum;
-            }
+        if (currency == USD && this.currency == RON) {
+            newSum = convertUsdToRon(sum);
+            sold = sold + newSum;
+        }
+        if (currency == EUR && this.currency == RON) {
+            newSum = convertToUsd(sum, EUR);
+            secondSum = convertUsdToRon(newSum);
+            sold = sold + secondSum;
+        }
+        if (currency == YEN && this.currency == RON) {
+            newSum = convertToUsd(sum, YEN);
+            secondSum = convertUsdToRon(newSum);
+            sold = sold + secondSum;
+        }
 
 
-            if (currency == USD && this.currency == YEN) {
-                newSum = convertUsdToYen(sum);
-                sold = sold + newSum;
-            }
-            if (currency == RON && this.currency == YEN) {
-                newSum = convertToUsd(sum, RON);
-                secondSum = convertUsdToYen(newSum);
-                sold = sold + secondSum;
-            }
-            if (currency == EUR && this.currency == YEN) {
-                newSum = convertToUsd(sum, EUR);
-                secondSum = convertUsdToYen(newSum);
-                sold = sold + secondSum;
-            }
+        if (currency == USD && this.currency == EUR) {
+            newSum = convertUsdToEur(sum);
+            sold = sold + newSum;
+        }
+        if (currency == RON && this.currency == EUR) {
+            newSum = convertToUsd(sum, RON);
+            secondSum = convertUsdToEur(newSum);
+            sold = sold + secondSum;
+        }
+        if (currency == YEN && this.currency == EUR) {
+            newSum = convertToUsd(sum, YEN);
+            secondSum = convertUsdToEur(newSum);
+            sold = sold + newSum;
+        }
+
+
+        if (currency == USD && this.currency == YEN) {
+            newSum = convertUsdToYen(sum);
+            sold = sold + newSum;
+        }
+        if (currency == RON && this.currency == YEN) {
+            newSum = convertToUsd(sum, RON);
+            secondSum = convertUsdToYen(newSum);
+            sold = sold + secondSum;
+        }
+        if (currency == EUR && this.currency == YEN) {
+            newSum = convertToUsd(sum, EUR);
+            secondSum = convertUsdToYen(newSum);
+            sold = sold + secondSum;
+        }
 
 
     }
+
     private double convertUsdToRon(double sum) {
         return sum / RON.getConvertion();
     }
@@ -304,6 +308,7 @@ public class BankAccount {
     private double convertUsdToYen(double sum) {
         return sum / YEN.getConvertion();
     }
+
     public int getId() {
         return id;
     }
