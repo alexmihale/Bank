@@ -5,7 +5,7 @@ import bank.Currency;
 public class Main {
     public static void main(String[] args) {
         BankAccount Radu = new BankAccount("Radu George", Currency.USD, "5468050458400842");
-        BankAccount George = new BankAccount("George Mihai", Currency.RON,"5468555458400842");
+        BankAccount George = new BankAccount("George Mihai", Currency.RON,"5468451458400842");
         BankAccount Mihai = new BankAccount("Mihai Radu", Currency.EUR,"5468452458400842");
         BankAccount Jin = new BankAccount("Jin Yoh", Currency.YEN,"546851448400842");
 
@@ -37,7 +37,15 @@ public class Main {
         System.out.println(Mihai.toString());
         System.out.println(Jin.toString());
 
+        System.out.println(Radu.getSold());
+        System.out.println(Jin.getCurrency());
+
         System.out.println(Radu.verifyCreditCard("5468050458400842"));
         System.out.println(Mihai.verifyCreditCard("5468452458400842"));
+        System.out.println(George.verifyCreditCard("5468451458400842"));
+        System.out.println(Jin.verifyCreditCard("546851448400842"));
+
+        Bank.ING.deleteBankAccount(Jin);
+        System.out.println(Jin.toString());
     }
 }
