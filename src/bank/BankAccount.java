@@ -218,68 +218,69 @@ public class BankAccount {
             return;
         }
         System.out.println("You deposit " + sum + " " + currency);
+        if (this.currency == USD) {
+            if (currency == RON) {
+                newSum = convertToUsd(sum, RON);
+                sold = sold + newSum;
+            }
+            if (currency == EUR) {
+                newSum = convertToUsd(sum, EUR);
+                sold = sold + newSum;
+            }
+            if (currency == YEN) {
+                newSum = convertToUsd(sum, YEN);
+                sold = sold + newSum;
+            }
+        }
+        if (this.currency == RON) {
+            if (currency == USD) {
+                newSum = convertUsdToRon(sum);
+                sold = sold + newSum;
+            }
+            if (currency == EUR) {
+                newSum = convertToUsd(sum, EUR);
+                secondSum = convertUsdToRon(newSum);
+                sold = sold + secondSum;
+            }
+            if (currency == YEN) {
+                newSum = convertToUsd(sum, YEN);
+                secondSum = convertUsdToRon(newSum);
+                sold = sold + secondSum;
+            }
+        }
+        if (this.currency == EUR) {
+            if (currency == USD) {
+                newSum = convertUsdToEur(sum);
+                sold = sold + newSum;
+            }
+            if (currency == RON) {
+                newSum = convertToUsd(sum, RON);
+                secondSum = convertUsdToEur(newSum);
+                sold = sold + secondSum;
+            }
+            if (currency == YEN) {
+                newSum = convertToUsd(sum, YEN);
+                secondSum = convertUsdToEur(newSum);
+                sold = sold + newSum;
+            }
+        }
+        if (this.currency == YEN) {
+            if (currency == USD) {
+                newSum = convertUsdToYen(sum);
+                sold = sold + newSum;
+            }
+            if (currency == RON) {
+                newSum = convertToUsd(sum, RON);
+                secondSum = convertUsdToYen(newSum);
+                sold = sold + secondSum;
+            }
+            if (currency == EUR) {
+                newSum = convertToUsd(sum, EUR);
+                secondSum = convertUsdToYen(newSum);
+                sold = sold + secondSum;
+            }
 
-        if (currency == RON && this.currency == USD) {
-            newSum = convertToUsd(sum, RON);
-            sold = sold + newSum;
         }
-        if (currency == EUR && this.currency == USD) {
-            newSum = convertToUsd(sum, EUR);
-            sold = sold + newSum;
-        }
-        if (currency == YEN && this.currency == USD) {
-            newSum = convertToUsd(sum, YEN);
-            sold = sold + newSum;
-        }
-
-        if (currency == USD && this.currency == RON) {
-            newSum = convertUsdToRon(sum);
-            sold = sold + newSum;
-        }
-        if (currency == EUR && this.currency == RON) {
-            newSum = convertToUsd(sum, EUR);
-            secondSum = convertUsdToRon(newSum);
-            sold = sold + secondSum;
-        }
-        if (currency == YEN && this.currency == RON) {
-            newSum = convertToUsd(sum, YEN);
-            secondSum = convertUsdToRon(newSum);
-            sold = sold + secondSum;
-        }
-
-
-        if (currency == USD && this.currency == EUR) {
-            newSum = convertUsdToEur(sum);
-            sold = sold + newSum;
-        }
-        if (currency == RON && this.currency == EUR) {
-            newSum = convertToUsd(sum, RON);
-            secondSum = convertUsdToEur(newSum);
-            sold = sold + secondSum;
-        }
-        if (currency == YEN && this.currency == EUR) {
-            newSum = convertToUsd(sum, YEN);
-            secondSum = convertUsdToEur(newSum);
-            sold = sold + newSum;
-        }
-
-
-        if (currency == USD && this.currency == YEN) {
-            newSum = convertUsdToYen(sum);
-            sold = sold + newSum;
-        }
-        if (currency == RON && this.currency == YEN) {
-            newSum = convertToUsd(sum, RON);
-            secondSum = convertUsdToYen(newSum);
-            sold = sold + secondSum;
-        }
-        if (currency == EUR && this.currency == YEN) {
-            newSum = convertToUsd(sum, EUR);
-            secondSum = convertUsdToYen(newSum);
-            sold = sold + secondSum;
-        }
-
-
     }
 
     private double convertUsdToRon(double sum) {
