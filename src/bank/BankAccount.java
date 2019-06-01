@@ -45,18 +45,6 @@ public class BankAccount {
             }
 
         }
-//        int sum = 0;
-//        long[] evenNumbers = new long[7];
-//        long[] oddNumbers = new long[7];
-//        int i = 0;
-//        long number = Long.valueOf(creditCardNumber);
-//        while(number > 0 ){
-//            oddNumbers[i] = number % 10;
-//            number /= 10;
-//            evenNumbers[i] = number % 10;
-//            number /= 10;
-//            i++;
-//        }
         int j = 0;
         while (j < numbers.length) {
             sum = sum + numbers[j];
