@@ -44,8 +44,9 @@ public class Main {
         System.out.println(Mihai.verifyCreditCard("5468452458400842"));
         System.out.println(George.verifyCreditCard("5468451458400842"));
         System.out.println(Jin.verifyCreditCard("546851448400842"));
-
+        System.out.println(Bank.ING.getNumberOfTotalAccounts());
         Bank.ING.deleteBankAccount(Jin);
         System.out.println(Jin.toString());
+        System.out.println(Bank.ING.getNumberOfTotalAccounts());
     }
 }
