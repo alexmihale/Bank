@@ -30,7 +30,7 @@ public class Main {
 
         George.withdrawMoney(20,Currency.RON);
         Jin.withdrawMoney(912309312,Currency.YEN);
-        Jin.withdrawMoney(38127387,Currency.YEN);
+        Jin.withdrawMoney(3387,Currency.YEN);
 
         System.out.println(Radu.toString());
         System.out.println(George.toString());
