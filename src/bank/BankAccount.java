@@ -27,11 +27,11 @@ public class BankAccount {
         this.creditCardNumber = creditCardNumber;
     }
 
-    public boolean verifyCreditCard(String creditCardNumber) {
+    public boolean verifyCreditCard(String creditCardNumber) { //Credit card verification
         char[] chars = creditCardNumber.toCharArray();
         int sum = 0;
         int[] numbers = new int[chars.length];
-        for (int i = 0; i < chars.length; i++) {
+        for (int i = 0; i < chars.length; i++) { //chars to int
             numbers[i] = chars[i] - 48;
         }
         for (int i = 0; i < numbers.length - 1; i += 2) {
@@ -46,12 +46,12 @@ public class BankAccount {
 
         }
         int j = 0;
-        while (j < numbers.length) {
-            sum = sum + numbers[j];
+        while (j < numbers.length) { //number addition
+             sum = sum + numbers[j];
             j++;
         }
 
-        if (sum % 10 == 0) {
+        if (sum % 10 == 0) {//verification
             return TRUE;
         } else {
             return FALSE;
@@ -59,15 +59,15 @@ public class BankAccount {
 
     }
 
-    public void withdrawMoney(double sum) {
-        if (checkBalance(sum) == -1) {
+    public void withdrawMoney(double sum) { //withdrow money function
+        if (checkBalance(sum) == -1) { //check blanace function
             return;
         }
         sold = sold - sum;
         System.out.println("You withdraw " + sum + " " + this.currency);
     }
 
-    private double checkBalance(double sum) {
+    private double checkBalance(double sum) { // check balance function
         if (sum > this.sold) {
             System.out.println("You don't have enough money!");
             return -1;
@@ -75,16 +75,16 @@ public class BankAccount {
         return sum;
     }
 
-    public void withdrawMoney(double sum, Currency currency) {
+    public void withdrawMoney(double sum, Currency currency) { //withdraw money function
         double newSum;
         double secondSum;
-        if (currency == this.currency) {
+        if (currency == this.currency) { // if account currency = withdraw currency
             withdrawMoney(sum);
             return;
         }
         System.out.println("You withdraw " + sum + " " + currency);
-        if (this.currency == EUR) {
-            if (currency == Currency.USD) {
+        if (this.currency == EUR) { // here we check the currency of the account
+            if (currency == Currency.USD) { // withdraw currency
                 newSum = convertUsdToEur(sum);
                 if (checkBalance(newSum) == -1) {
                     return;
@@ -193,21 +193,21 @@ public class BankAccount {
         }
     }
 
-    public void depositMoney(double sum) {
+    public void depositMoney(double sum) { //deposit money function
         sold = sold + sum;
         System.out.println("You deposit " + sum + " " + this.currency);
     }
 
-    public void depositMoney(double sum, Currency currency) {
+    public void depositMoney(double sum, Currency currency) { //deposit money in other currency
         double newSum;
         double secondSum;
-        if (currency == this.currency) {
-            depositMoney(sum);
+        if (currency == this.currency) { //if deposit currency - account currency
+            depositMoney(sum); // call depositMoney() function
             return;
         }
         System.out.println("You deposit " + sum + " " + currency);
-        if (this.currency == USD) {
-            if (currency == RON) {
+        if (this.currency == USD) { //check account currency
+            if (currency == RON) { // check deposit currency
                 newSum = convertToUsd(sum, RON);
                 sold = sold + newSum;
             }
@@ -273,9 +273,9 @@ public class BankAccount {
 
     private double convertUsdToRon(double sum) {
         return sum / RON.getConvertion();
-    }
+    } // convertion from USD to RON
 
-    private double convertToUsd(double sum, Currency currency) {
+    private double convertToUsd(double sum, Currency currency) { //convert from other currency to USD
         if (currency == Currency.RON) {
             return sum * RON.getConvertion();
         }
@@ -292,33 +292,34 @@ public class BankAccount {
 
     private double convertUsdToEur(double sum) {
         return sum / EUR.getConvertion();
-    }
+    } //convertion from USD to EUR
 
     private double convertUsdToYen(double sum) {
         return sum / YEN.getConvertion();
-    }
+    } // convertion from USD to YEN
 
     public int getId() {
         return id;
-    }
+    } // get it function
 
-    public double getSold() {
+    public double getSold() { //get sold function. Display the money that are in the account using account currency
         System.out.print("You sold is: ");
         return sold;
     }
 
-    public Currency getCurrency() {
+    public Currency getCurrency() { // check account currency
         System.out.print("Your currency is ");
         return currency;
     }
 
     @Override
-    public String toString() {
+    public String toString() { // display the acccount details
         return "BankAccount{" +
                 "id=" + id +
                 ", ownerName='" + ownerName + '\'' +
                 ", currency=" + currency +
                 ", sold=" + sold +
+                ", credit card number: " + creditCardNumber +
                 '}';
     }
 }
