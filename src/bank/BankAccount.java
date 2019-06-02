@@ -34,7 +34,7 @@ public class BankAccount {
         for (int i = 0; i < chars.length; i++) { //chars to int
             numbers[i] = chars[i] - 48;
         }
-        for (int i = 0; i < numbers.length - 1; i += 2) {
+        for (int i = numbers.length - 2; i> -1 ; i -= 2) {
             numbers[i] = numbers[i] * 2;
             if (numbers[i] > 9) {
                 int nr;
