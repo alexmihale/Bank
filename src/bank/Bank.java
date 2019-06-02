@@ -1,6 +1,6 @@
 package bank;
 
-public enum Bank {
+public enum Bank { // here we create our banks
     ING;
     private int counter = 0;
 
@@ -8,7 +8,7 @@ public enum Bank {
 
      Bank() {}
 
-    public void registerBankAccount(BankAccount bankAccount){
+    public void registerBankAccount(BankAccount bankAccount){ // register a new bank account.
         if(counter + 1 > this.bankAccounts.length ){
             doubleArray();
         }
@@ -16,7 +16,7 @@ public enum Bank {
         counter++;
     }
 
-    private void doubleArray(){
+    private void doubleArray(){ //we double the array of accounts
     BankAccount[] newArray = new BankAccount[bankAccounts.length * 2];
         for (int i = 0; i < bankAccounts.length ; i++) {
             newArray[i] = bankAccounts[i];
@@ -25,7 +25,7 @@ public enum Bank {
     bankAccounts = newArray;
     }
 
-    public void deleteBankAccount(BankAccount bankAccount){
+    public void deleteBankAccount(BankAccount bankAccount){ //delete bank account
         int i = findIdOfBankAccount(bankAccount);
 
         if(i == -1){
@@ -41,7 +41,7 @@ public enum Bank {
 
     }
 
-    public int findIdOfBankAccount(BankAccount bankAccount){
+    public int findIdOfBankAccount(BankAccount bankAccount){ //find an id of a bank account
         int low = 0;
         int high = counter;
         while (low <= high){
@@ -62,6 +62,6 @@ public enum Bank {
 
     public int getNumberOfTotalAccounts() {
         return counter;
-    }
+    } //get the number of total accounts
 
 }
