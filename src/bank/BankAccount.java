@@ -82,7 +82,7 @@ public class BankAccount {
             withdrawMoney(sum);
             return;
         }
-        System.out.println("You withdraw " + sum + " " + currency);
+
         if (this.currency == EUR) { // here we check the currency of the account
             if (currency == Currency.USD) { // withdraw currency
                 newSum = convertUsdToEur(sum);
@@ -91,6 +91,7 @@ public class BankAccount {
                 }
 
                 sold = sold - newSum;
+                System.out.println("You withdraw " + sum + " " + currency + " / " + newSum + " " + this.currency);
             }
 
             if (currency == Currency.RON) {
@@ -100,6 +101,8 @@ public class BankAccount {
                     return;
                 }
                 sold = sold - secondSum;
+                System.out.println("You withdraw " + sum + " " + currency + " / " + secondSum + " " + this.currency);
+
             }
 
             if (currency == Currency.YEN) {
@@ -109,6 +112,8 @@ public class BankAccount {
                     return;
                 }
                 sold = sold - secondSum;
+                System.out.println("You withdraw " + sum + " " + currency + " / " + secondSum + " " + this.currency);
+
             }
         }
         if (this.currency == Currency.YEN) {
@@ -118,6 +123,7 @@ public class BankAccount {
                     return;
                 }
                 sold = sold - newSum;
+                System.out.println("You withdraw " + sum + " " + currency + " / " + newSum + " " + this.currency);
             }
 
             if (currency == Currency.RON) {
@@ -128,6 +134,7 @@ public class BankAccount {
                 }
 
                 sold = sold - secondSum;
+                System.out.println("You withdraw " + sum + " " + currency + " / " + secondSum + " " + this.currency);
             }
 
             if (currency == EUR) {
@@ -137,6 +144,7 @@ public class BankAccount {
                     return;
                 }
                 sold = sold - secondSum;
+                System.out.println("You withdraw " + sum + " " + currency + " / " + secondSum + " " + this.currency);
             }
         }
         if (this.currency == Currency.RON) {
@@ -146,6 +154,7 @@ public class BankAccount {
                     return;
                 }
                 sold = sold - newSum;
+                System.out.println("You withdraw " + sum + " " + currency + " / " + newSum + " " + this.currency);
             }
 
             if (currency == EUR) {
@@ -155,6 +164,7 @@ public class BankAccount {
                     return;
                 }
                 sold = sold - secondSum;
+                System.out.println("You withdraw " + sum + " " + currency + " / " + secondSum + " " + this.currency);
             }
 
             if (currency == Currency.YEN) {
@@ -164,6 +174,7 @@ public class BankAccount {
                     return;
                 }
                 sold = sold - secondSum;
+                System.out.println("You withdraw " + sum + " " + currency + " / " + secondSum + " " + this.currency);
             }
         }
         if (this.currency == Currency.USD) {
@@ -173,6 +184,7 @@ public class BankAccount {
                     return;
                 }
                 sold = sold - newSum;
+                System.out.println("You withdraw " + sum + " " + currency + " / " + newSum + " " + this.currency);
             }
 
             if (currency == Currency.RON) {
@@ -181,6 +193,7 @@ public class BankAccount {
                     return;
                 }
                 sold = sold - newSum;
+                System.out.println("You withdraw " + sum + " " + currency + " / " + newSum + " " + this.currency);
             }
 
             if (currency == Currency.YEN) {
@@ -189,6 +202,7 @@ public class BankAccount {
                     return;
                 }
                 sold = sold - newSum;
+                System.out.println("You withdraw " + sum + " " + currency + " / " + newSum + " " + this.currency);
             }
         }
     }
@@ -205,67 +219,79 @@ public class BankAccount {
             depositMoney(sum); // call depositMoney() function
             return;
         }
-        System.out.println("You deposit " + sum + " " + currency);
+
         if (this.currency == USD) { //check account currency
             if (currency == RON) { // check deposit currency
                 newSum = convertToUsd(sum, RON);
                 sold = sold + newSum;
+                System.out.println("You deposit " + sum + " " + currency + " / " + newSum + " " + this.currency);
             }
             if (currency == EUR) {
                 newSum = convertToUsd(sum, EUR);
                 sold = sold + newSum;
+                System.out.println("You deposit " + sum + " " + currency + " / " + newSum + " " + this.currency);
             }
             if (currency == YEN) {
                 newSum = convertToUsd(sum, YEN);
                 sold = sold + newSum;
+                System.out.println("You deposit " + sum + " " + currency + " / " + newSum + " " + this.currency);
             }
         }
         if (this.currency == RON) {
             if (currency == USD) {
                 newSum = convertUsdToRon(sum);
                 sold = sold + newSum;
+                System.out.println("You deposit " + sum + " " + currency + " / " + newSum + " " + this.currency);
             }
             if (currency == EUR) {
                 newSum = convertToUsd(sum, EUR);
                 secondSum = convertUsdToRon(newSum);
                 sold = sold + secondSum;
+                System.out.println("You deposit " + sum + " " + currency + " / " + secondSum + " " + this.currency);
             }
             if (currency == YEN) {
                 newSum = convertToUsd(sum, YEN);
                 secondSum = convertUsdToRon(newSum);
                 sold = sold + secondSum;
+                System.out.println("You deposit " + sum + " " + currency + " / " + secondSum + " " + this.currency);
             }
         }
         if (this.currency == EUR) {
             if (currency == USD) {
                 newSum = convertUsdToEur(sum);
                 sold = sold + newSum;
+                System.out.println("You deposit " + sum + " " + currency + " / " + newSum + " " + this.currency);
             }
             if (currency == RON) {
                 newSum = convertToUsd(sum, RON);
                 secondSum = convertUsdToEur(newSum);
                 sold = sold + secondSum;
+                System.out.println("You deposit " + sum + " " + currency + " / " + secondSum + " " + this.currency);
             }
             if (currency == YEN) {
                 newSum = convertToUsd(sum, YEN);
                 secondSum = convertUsdToEur(newSum);
-                sold = sold + newSum;
+                sold = sold + secondSum;
+                System.out.println("You deposit " + sum + " " + currency + " / " + secondSum + " " + this.currency);
             }
         }
         if (this.currency == YEN) {
             if (currency == USD) {
                 newSum = convertUsdToYen(sum);
                 sold = sold + newSum;
+                System.out.println("You deposit " + sum + " " + currency + " / " + newSum + " " + this.currency);
             }
             if (currency == RON) {
                 newSum = convertToUsd(sum, RON);
                 secondSum = convertUsdToYen(newSum);
                 sold = sold + secondSum;
+                System.out.println("You deposit " + sum + " " + currency + " / " + secondSum + " " + this.currency);
             }
             if (currency == EUR) {
                 newSum = convertToUsd(sum, EUR);
                 secondSum = convertUsdToYen(newSum);
                 sold = sold + secondSum;
+                System.out.println("You deposit " + sum + " " + currency + " / " + secondSum + " " + this.currency);
             }
 
         }
