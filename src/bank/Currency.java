@@ -1,6 +1,6 @@
 package bank;
 
-public enum Currency {
+public enum Currency {//here we create an enum with the all currency that we have and their convertion rate
     USD(1),
     RON(0.23),
     EUR(1.12),
@@ -12,7 +12,7 @@ public enum Currency {
         this.convertion = convertion;
     }
 
-    public double getConvertion() {
+    public double getConvertion() { // get convertion function that we use in convertions in BankAccount class.
         return convertion;
     }
 
