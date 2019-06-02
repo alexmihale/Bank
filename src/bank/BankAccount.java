@@ -34,6 +34,21 @@ public class BankAccount {
         for (int i = 0; i < chars.length; i++) { //chars to int
             numbers[i] = chars[i] - 48;
         }
+        if(numbers[0] == 4){
+            System.out.println("Visa card");
+        }
+        if (numbers[0] == 5){
+            System.out.println("Master card");
+        }
+        if (numbers[0] == 3 && numbers[1]==7){
+            System.out.println("American Express card");
+        }
+        if (numbers[0]== 6){
+            System.out.println("Discover card");
+        }
+        else{
+            return FALSE;
+        }
         for (int i = numbers.length - 2; i> -1 ; i -= 2) {
             numbers[i] = numbers[i] * 2;
             if (numbers[i] > 9) {
